@@ -1,0 +1,21 @@
+{
+  "name": "consulting",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon ./src/main",
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^27.0.5",
+    "nodemon": "^2.0.9"
+  },
+  "dependencies": {
+    "@types/jest": "^26.0.23",
+    "express": "^4.17.1"
+  }
+}
