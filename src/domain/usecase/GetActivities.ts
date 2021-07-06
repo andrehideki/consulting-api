@@ -1,0 +1,28 @@
+import { ActivityRepository } from "@domain/repository/ActivityRepository";
+import { ConsultingRepository } from "@repository/ConsultingRepository";
+import { RepositoryFactory } from "@factory/RepositoryFactory";
+
+export class GetActivities {
+    activityRepository: ActivityRepository;
+    consultingRepository: ConsultingRepository
+    
+    constructor(repositoryFactory: RepositoryFactory) {
+        this.activityRepository = repositoryFactory.createActivityRepository();        
+        this.consultingRepository = repositoryFactory.createConsultingRepository();
+    }
+
+    async execute({ consultingId, month, year }) {
+        const activities = await this.activityRepository.findActivities(consultingId, month, year);
+        return activities.map(atv => {
+            return {
+                date: atv.date.toISOString(),
+                year: atv.year,
+                month: atv.month,
+                name: atv.name,
+                description: atv.description,
+                hours: atv.hours,
+                status: atv.status
+            };
+        });
+    }
+}

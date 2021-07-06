@@ -1,0 +1,19 @@
+import { RepositoryFactory } from "@factory/RepositoryFactory";
+import { ConsultingRepository } from "@repository/ConsultingRepository";
+
+export class GetConsulting {
+    consultingRepository: ConsultingRepository;
+
+    constructor(repositoryFactory: RepositoryFactory) {
+        this.consultingRepository = repositoryFactory.createConsultingRepository();
+    }
+
+    async execute(emailAddress = ""): Promise<any> {
+        const consulting = await this.consultingRepository.getByEmail(emailAddress);
+        return {
+            name: consulting.name.value,
+            email: consulting.email.value,
+            birthDate: consulting.birthDate.toString()
+        };
+    }
+}
