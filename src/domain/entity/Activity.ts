@@ -1,16 +1,16 @@
 import { Tag } from "@entity/Tag";
 
 export class Activity {
-    id: Number;
-    name: String;
-    description: String;
+    id: number;
+    name: string;
+    description: string;
     date: Date;
-    hours: Number;
-    consulting: Number;
+    hours: number;
+    consulting: number;
     tags: Tag[];
-    status: String;
+    status: string;
 
-    constructor(id: Number, name: String, description: String, date: Date, consulting: Number, hours: Number, tags: Tag[], status: String) {
+    constructor(id: number, name: string, description: string, date: Date, consulting: number, hours: number, tags: Tag[], status: string) {
         if (!name) throw new Error("Name is required");
         if (!hours || hours < 1) throw new Error("Invalid Hour");
         if (!consulting) throw new Error("Consulting is required");

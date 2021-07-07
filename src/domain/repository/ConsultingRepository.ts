@@ -1,8 +1,8 @@
 import { Consulting } from "@entity/Consulting";
 
 export interface ConsultingRepository {
-    count(): Promise<Number>;
-    getByEmail(email: String): Promise<Consulting>;
+    count(): Promise<number>;
+    getByEmail(email: string): Promise<Consulting>;
     getById(id: number): Promise<Consulting>;
-    save(consulting): Promise<Consulting>;
+    save(consulting: Consulting): Promise<Consulting>;
 }

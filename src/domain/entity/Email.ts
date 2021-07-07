@@ -1,7 +1,7 @@
 export class Email {
-    value: String;
+    value: string;
 
-    constructor(emailAddress: String) {
+    constructor(emailAddress: string) {
         if (!emailAddress || !/^.+@[a-z]+\.[a-z]+$/.test(emailAddress.toString())) {
             throw new Error("Invalid email");
         }

@@ -9,12 +9,12 @@ export class ConsultingRepositoryJson implements ConsultingRepository {
         this.database = database;
     }
 
-    getById(id: number): Promise<Consulting> {
+    async getById(id: number): Promise<Consulting> {
         let consulting = this.database.tables.consulting[id];
         if (!consulting) {
             throw new Error("Consulting not found");
         }
-        return consulting;
+        return new Consulting(consulting.id, consulting.first_name, consulting.last_name, consulting.email, consulting.birth_date);
     }
 
     private async getSequence(): Promise<Number> {
@@ -23,7 +23,7 @@ export class ConsultingRepositoryJson implements ConsultingRepository {
         return sequence;
     }
 
-    async count(): Promise<Number> {
+    async count(): Promise<number> {
         return Object.keys(this.database.tables.consulting).length;
     }
     

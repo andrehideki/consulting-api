@@ -8,8 +8,8 @@ export class ActivityRepositoryJson implements ActivityRepository {
     constructor(database: any) {
         this.database = database;
     }
-
-    private async getSequence(name): Promise<Number> {
+    
+    private async getSequence(name): Promise<number> {
         const sequence = this.database.sequences[name];
         this.database.sequences[name] += 1;
         return sequence;
@@ -63,6 +63,14 @@ export class ActivityRepositoryJson implements ActivityRepository {
             }
         }
         return findedActivities;
+    }
+
+    async getActivity(activityId: number): Promise<Activity> {
+        let activity = this.database.tables.activity[activityId];
+        if (!activity) {
+            throw new Error("Activity not found");
+        }
+        return new Activity(activity.id, activity.name, activity.description, new Date(`${activity.date}:`), activity.consulting, activity.hours, activity.tags, activity.status);
     }
 
     async findTag(tagName: string): Promise<Tag[]> {

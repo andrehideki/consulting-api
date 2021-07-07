@@ -8,12 +8,8 @@ export class ConsultingController {
     }
 
     getConsulting(emailAddress) {
-        console.log(emailAddress)
         const getConsulting = new GetConsulting(this.repositoryFactory);
-        
-        
         let consulting = getConsulting.execute(emailAddress);
-        console.log(consulting)
         return consulting;
     }
 }
