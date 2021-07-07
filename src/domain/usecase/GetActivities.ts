@@ -15,11 +15,11 @@ export class GetActivities {
         const activities = await this.activityRepository.findActivities(consultingId, month, year);
         return activities.map(atv => {
             return {
+                id: atv.id,
                 date: atv.date.toISOString(),
                 year: atv.year,
                 month: atv.month,
                 name: atv.name,
-                description: atv.description,
                 hours: atv.hours,
                 status: atv.status
             };
