@@ -1,14 +1,14 @@
 import * as database from "@database/db.json";
 import { RepositoryFactoryJson } from "@factoryImpl/RepositoryFactoryJson";
-import { GetActivities } from "@domain/usecase/GetActivities";
+import { GetConsultingActivities } from "@domain/usecase/GetConsultingActivities";
 
-let getActivity: GetActivities;
+let getActivity: GetConsultingActivities;
 
 describe("Get Activities Test", function() {
     
     beforeEach(async () => {
         const repositoryFactory = new RepositoryFactoryJson(database);
-        getActivity = new GetActivities(repositoryFactory);
+        getActivity = new GetConsultingActivities(repositoryFactory);
     });
 
     test("Should get Activities", async () => {

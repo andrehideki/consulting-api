@@ -2,7 +2,7 @@ import { ActivityRepository } from "@domain/repository/ActivityRepository";
 import { ConsultingRepository } from "@repository/ConsultingRepository";
 import { RepositoryFactory } from "@factory/RepositoryFactory";
 
-export class GetActivities {
+export class GetConsultingActivities {
     activityRepository: ActivityRepository;
     consultingRepository: ConsultingRepository
     
