@@ -14,12 +14,12 @@ export class HttpServer {
         this.repositoryFactory = repositoryFactory;
     }
 
-    start() {
+    async start() {
         this.configureRoutes();        
         this.app.listen(this.port, () => console.log(`Application is running at http://localhost:${this.port}`));
     }
 
-    configureRoutes() {
-        new ConsultingRoute(this.app, this.repositoryFactory);
+    async configureRoutes() {
+        await new ConsultingRoute(this.app, this.repositoryFactory).configure();
     }
 }

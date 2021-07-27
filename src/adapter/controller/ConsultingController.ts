@@ -1,4 +1,4 @@
-const GetConsulting = require("../../domain/usecase/GetConsulting");
+import { GetConsulting } from "@domain/usecase/GetConsulting";
 
 export class ConsultingController {
     repositoryFactory;
@@ -7,9 +7,9 @@ export class ConsultingController {
         this.repositoryFactory = repositoryFactory;
     }
 
-    getConsulting(emailAddress) {
+    async getConsulting(emailAddress) {
         const getConsulting = new GetConsulting(this.repositoryFactory);
-        let consulting = getConsulting.execute(emailAddress);
+        let consulting = await getConsulting.execute(emailAddress);
         return consulting;
     }
 }

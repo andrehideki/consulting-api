@@ -3,12 +3,18 @@ import { ConsultingController } from "src/adapter/controller/ConsultingControlle
 
 export class ConsultingRoute {
     private route = "/consulting";
-    
+    private app;
+    private repositoryFactory;
     constructor(app, repositoryFactory) {
-        app.get(`${this.route}`, (req, res) => {
+        this.app = app;
+        this.repositoryFactory = repositoryFactory;
+    }
+
+    async configure() {
+        this.app.get(`${this.route}`, async (req, res) => {
             try {
-                const consultingController = new ConsultingController(repositoryFactory);
-                let getConsultingOutput = consultingController.getConsulting(req.query.email);
+                const consultingController = new ConsultingController(this.repositoryFactory);
+                let getConsultingOutput = await consultingController.getConsulting(req.query.email);
                 res.json(getConsultingOutput);
             } catch(error) {
                 res.status(404);
