@@ -21,7 +21,22 @@ describe("Register Activity Test", function() {
             date: "2021-01-01",
             consultingId: 2,
             amountOfHours: 8,
+            responsible: 2,
             tags: []
+        });
+        const afterRegisteringActivitySize = await (await activityRepository.findActivities(2, 1, 2021)).length;
+        expect(afterRegisteringActivitySize).toBe(1);
+    });
+
+    test("Should register activity with consulting as responsible", async () => {
+        await registerActivity.execute({
+            name: "Nova atividade",
+            description: "Realizar nova atividade...",
+            date: "2021-01-01",
+            consultingId: 2,
+            amountOfHours: 8,
+            tags: [],
+            responsible: 2
         });
         const afterRegisteringActivitySize = await (await activityRepository.findActivities(2, 1, 2021)).length;
         expect(afterRegisteringActivitySize).toBe(1);
@@ -35,6 +50,7 @@ describe("Register Activity Test", function() {
                 date: "2021-01-01",
                 consultingId: 999,
                 amountOfHours: 8,
+                responsible: 2,
                 tags: []
             });
         } catch(err) {
@@ -51,6 +67,7 @@ describe("Register Activity Test", function() {
                 date: "2021-01-01",
                 consultingId: 2,
                 amountOfHours: 0,
+                responsible: 2,
                 tags: []
             });
         } catch (err) {
@@ -67,6 +84,7 @@ describe("Register Activity Test", function() {
                 date: "2021-01-01",
                 amountOfHours: 10,
                 consultingId: 2,
+                responsible: 2,
                 tags: []
             });
         } catch (err) {
@@ -84,6 +102,7 @@ describe("Register Activity Test", function() {
             tags: [ tagName ],
             date: "2021-01-01",
             consultingId: 2,
+            responsible: 2,
             amountOfHours: 10
         });
         const newTag = await activityRepository.findTag(tagName);

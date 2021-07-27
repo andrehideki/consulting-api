@@ -14,7 +14,7 @@ export class RegisterActivity {
         this.consultingRepository = repositoryFactory.createConsultingRepository();
     }
 
-    async execute({ name, description, date, consultingId, amountOfHours, tags }) {
+    async execute({ name, description, date, consultingId, amountOfHours, responsible, tags }) {
         const consulting = await this.consultingRepository.getById(consultingId);
         const activity = new Activity(
             undefined,
@@ -22,6 +22,7 @@ export class RegisterActivity {
             description, 
             new Date(`${date}:`), 
             consulting.id,
+            responsible,
             amountOfHours, 
             tags.map(tagName => new Tag(tagName)),
             "Opened");

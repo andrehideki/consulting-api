@@ -59,7 +59,8 @@ export class ActivityRepositoryJson implements ActivityRepository {
             let activity = this.database.tables.activity[id];
             let activityDate = new Date(`${activity.date}:`);
             if (activity.consulting === consultingId && (activityDate.getMonth() + 1) === month && activityDate.getFullYear() === year) {
-                findedActivities.push(new Activity(activity.id, activity.name, activity.description, activityDate, activity.consulting, activity.hours, activity.tags, activity.status));
+                findedActivities.push(new Activity(activity.id, activity.name, activity.description, activityDate, activity.consulting, 
+                    activity.responsible, activity.hours, activity.tags, activity.status));
             }
         }
         return findedActivities;
@@ -70,7 +71,9 @@ export class ActivityRepositoryJson implements ActivityRepository {
         if (!activity) {
             throw new Error("Activity not found");
         }
-        return new Activity(activity.id, activity.name, activity.description, new Date(`${activity.date}:`), activity.consulting, activity.hours, activity.tags, activity.status);
+        //id: number, name: string, description: string, date: Date, consulting: number, responsible: Responsible, hours: number, tags: Tag[], status: string) {
+        return new Activity(activity.id, activity.name, activity.description, new Date(`${activity.date}:`), activity.consulting,
+            activity.responsible, activity.hours, activity.tags, activity.status);
     }
 
     async findTag(tagName: string): Promise<Tag[]> {

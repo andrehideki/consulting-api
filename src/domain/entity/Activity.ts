@@ -1,4 +1,5 @@
 import { Tag } from "@entity/Tag";
+import { Responsible } from "@entity/Responsible";
 
 export class Activity {
     id: number;
@@ -9,8 +10,9 @@ export class Activity {
     consulting: number;
     tags: Tag[];
     status: string;
+    responsible: Responsible;
 
-    constructor(id: number, name: string, description: string, date: Date, consulting: number, hours: number, tags: Tag[], status: string) {
+    constructor(id: number, name: string, description: string, date: Date, consulting: number, responsible: Responsible, hours: number, tags: Tag[], status: string) {
         if (!name) throw new Error("Name is required");
         if (!hours || hours < 1) throw new Error("Invalid Hour");
         if (!consulting) throw new Error("Consulting is required");
@@ -23,6 +25,7 @@ export class Activity {
         this.name = name;
         this.description = description;
         this.consulting = consulting;
+        this.responsible = responsible;
         this.hours = hours;
         this.tags = tags;
         this.status = status;
