@@ -1,11 +1,9 @@
-import { Email } from "@domain/entity/Email";
 import { User } from "@domain/entity/User";
 import { UserRepository } from "@domain/repository/UserRepository";
-import { UserCategory } from "@domain/vo/UserCategory";
 import { RepositoryFactory } from "@factory/RepositoryFactory";
 import { ActivityRepositoryJson } from "@repositoryImpl/ActivityRepositoryJson";
 import { ConsultingRepositoryJson } from "@repositoryImpl/ConsultingRepositoryJson";
-import { DataEncriptorBcrypt } from "src/infra/services/DataEncriptorBcrypt";
+import { DataEncriptorBcrypt } from "../../infra/services/DataEncriptorBcrypt";
 
 export class RepositoryFactoryJson implements RepositoryFactory {
     databaseJson: any;
@@ -31,9 +29,8 @@ export class RepositoryFactoryJson implements RepositoryFactory {
             new User("fulano@mail.com", "$2b$04$UzfaPfNyxfGVq0ma.RuCrOvCuDhuKjmQjJgLhT6ZhcE9VihFzsZ5G", "CONSULTING", new DataEncriptorBcrypt()),
             new User("beltrano@mail.com", "$2b$04$86GW68Xys0s9XexRe4acq.KAdbuZYDHqfKe6BPWkcnXICL8PVhTaq", "CONSULTING", new DataEncriptorBcrypt()),
         ];
-
         return {
-            get(email: string): User {
+            async get(email: string): Promise<User> {
                 let user = users.filter(user => user.email.value === email)[0];
                 if (!user) throw new Error("User not found");
                 return user;

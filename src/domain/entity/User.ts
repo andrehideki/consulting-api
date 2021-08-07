@@ -12,9 +12,10 @@ export class User {
     this.email = new Email(email);
     this.password = password;
     this.category = getUserCategory(category);
+    this.encryptor = encryptor;
   }
 
   async authenticate(password: string): Promise<boolean> {
-    return await this.encryptor.match(password, this.password);
+    return this.encryptor.match(password, this.password);
   }
 }

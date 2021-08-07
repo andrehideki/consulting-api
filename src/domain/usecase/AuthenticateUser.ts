@@ -19,8 +19,12 @@ export class AuthenticateUser {
     this.userRepository = repositoryFactory.createUserRepository();
   }
 
-  execute(input: AuthenticateUserInput): AuthenticateUserOuput {
-    let user = this.userRepository.get(input.email);
+  async execute(input: AuthenticateUserInput): Promise<AuthenticateUserOuput> {
+    let user = await this.userRepository.get(input.email);
+    console.log("uc", user);
+    if (!!user.authenticate(input.password)) {
+      throw new Error("Invalid password");
+    }
     return {
       email: user.email.value,
       userCategory: user.category.toString()

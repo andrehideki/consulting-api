@@ -1,6 +1,5 @@
 import { UserController } from "src/adapter/controller/UserController";
 
-
 export class UserRoute {
     private route = "/user";
     private app;
@@ -24,8 +23,8 @@ export class UserRoute {
                 res.json(authenticateUserOutput);
             } catch(error) {
                 console.log(error)
-                res.status(404);
-                res.json([]);
+                res.status(403);
+                res.json(error.toString());
             }
         });
     }

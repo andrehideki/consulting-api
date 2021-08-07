@@ -11,8 +11,14 @@ describe("User Authentication Test", function() {
         authenticateUser = new AuthenticateUser(repositoryFactory);
     });
 
-    test.only("Should authenticate with login and password", async () => {
-        let output = authenticateUser.execute({ email: "fulano@mail.com", password: "teste" });
+    test("Should authenticate with login and password", async () => {
+        let output = await authenticateUser.execute({ email: "fulano@mail.com", password: "1234" });
         expect(output.email).toBe("fulano@mail.com");
+    });
+
+    test("Should throw error when password is incorrect", async () => {
+        expect(async () => {
+            await authenticateUser.execute({ email: "fulano@mail.com", password: "invalid password" });
+        }).toThrow("");
     });
 });

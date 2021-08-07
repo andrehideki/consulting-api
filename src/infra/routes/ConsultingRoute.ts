@@ -15,7 +15,6 @@ export class ConsultingRoute {
             try {
                 const consultingController = new ConsultingController(this.repositoryFactory);
                 let getConsultingOutput = await consultingController.getConsulting(req.query.email);
-                console.log(getConsultingOutput)
                 res.json(getConsultingOutput);
             } catch(error) {
                 console.log(error);

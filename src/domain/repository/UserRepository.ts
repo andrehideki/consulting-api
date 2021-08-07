@@ -1,5 +1,5 @@
 import { User } from "@domain/entity/User";
 
 export interface UserRepository {
-  get(email: string): User;
+  get(email: string): Promise<User>;
 }
