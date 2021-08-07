@@ -22,8 +22,8 @@ export class AuthenticateUser {
   execute(input: AuthenticateUserInput): AuthenticateUserOuput {
     let user = this.userRepository.get(input.email);
     return {
-      email: user.email,
-      userCategory: ""
+      email: user.email.value,
+      userCategory: user.category.toString()
     }
   }
   

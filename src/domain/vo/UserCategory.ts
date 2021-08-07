@@ -6,7 +6,6 @@ export enum UserCategory {
 
 export const getUserCategory = (category: string): UserCategory => {
   let userCategory: UserCategory = UserCategory[category];
-  console.log("categop", userCategory)
   if (!userCategory) throw new Error("Category not found");
   return userCategory;
 }
