@@ -19,14 +19,18 @@ export class RepositoryFactoryJson implements RepositoryFactory {
     }
 
     createUserRepository(): UserRepository {
+        /*
+            1234 = $2b$04$UzfaPfNyxfGVq0ma.RuCrOvCuDhuKjmQjJgLhT6ZhcE9VihFzsZ5G
+            4321 = $2b$04$86GW68Xys0s9XexRe4acq.KAdbuZYDHqfKe6BPWkcnXICL8PVhTaq
+        */
         const users = [
             { 
                 email: "fulano@mail.com",
-                password: "1234"
+                password: "$2b$04$UzfaPfNyxfGVq0ma.RuCrOvCuDhuKjmQjJgLhT6ZhcE9VihFzsZ5G"
             },
             { 
                 email: "beltrano@mail.com",
-                password: "4321"
+                password: "$2b$04$86GW68Xys0s9XexRe4acq.KAdbuZYDHqfKe6BPWkcnXICL8PVhTaq"
             }
         ];
 
