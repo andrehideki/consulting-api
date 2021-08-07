@@ -1,12 +1,12 @@
 import { RepositoryFactory } from "@domain/factory/RepositoryFactory";
 import { UserRepository } from "@domain/repository/UserRepository";
 
-interface AuthenticateUserInput {
+export interface AuthenticateUserInput {
   email: string;
   password: string;
 }
 
-interface AuthenticateUserOuput {
+export interface AuthenticateUserOuput {
   email: string;
   userCategory: string;
 }
