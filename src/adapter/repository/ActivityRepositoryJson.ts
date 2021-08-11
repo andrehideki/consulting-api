@@ -1,6 +1,6 @@
 import { Activity } from "@domain/entity/Activity";
 import { Tag } from "@domain/entity/Tag";
-import { ActivityRepository } from "@repository/ActivityRepository";
+import { ActivityRepository } from "@domain/repository/ActivityRepository";
 
 export class ActivityRepositoryJson implements ActivityRepository {
     database: any;

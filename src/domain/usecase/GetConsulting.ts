@@ -1,5 +1,5 @@
-import { RepositoryFactory } from "@factory/RepositoryFactory";
-import { ConsultingRepository } from "@repository/ConsultingRepository";
+import { RepositoryFactory } from "@domain/factory/RepositoryFactory";
+import { ConsultingRepository } from "@domain/repository/ConsultingRepository";
 
 export class GetConsulting {
     consultingRepository: ConsultingRepository;

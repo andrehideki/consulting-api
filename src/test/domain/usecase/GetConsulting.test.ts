@@ -1,6 +1,7 @@
 import { GetConsulting } from "@domain/usecase/GetConsulting";
 import { RepositoryFactoryJson } from "@adapter/factory/RepositoryFactoryJson";
 import * as database from "@infra/database/db.json";
+import { DataEncriptorBcrypt } from "@infra/services/DataEncriptorBcrypt";
 
 let getConsulting;
 
@@ -8,7 +9,7 @@ let getConsulting;
 describe("Get Consultings Test", function() {
 
     beforeEach(async () => {
-        const repositoryFactory = new RepositoryFactoryJson(database);    
+        const repositoryFactory = new RepositoryFactoryJson(database, new DataEncriptorBcrypt());    
         getConsulting = new GetConsulting(repositoryFactory);
     });
 

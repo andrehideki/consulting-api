@@ -10,6 +10,7 @@ export class DataEncriptorBcrypt implements DataEncriptor {
   encrypt(data: string): Promise<string> {
     throw new Error("Method not implemented.");
   }
+  
   desencrypt(data: string): Promise<string> {
     throw new Error("Method not implemented.");
   }

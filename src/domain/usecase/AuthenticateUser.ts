@@ -23,13 +23,12 @@ export class AuthenticateUser {
     let user = await this.userRepository.get(input.email);
     let isAuthenticated = await user.authenticate(input.password);
     if (!isAuthenticated) {
-      console.log("here")
-      throw new Error("Invalid password");
+        throw new Error("Invalid password");
     }
     return {
       email: user.email.value,
       userCategory: user.category.toString()
     }
   }
-  
+
 }

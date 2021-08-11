@@ -1,5 +1,5 @@
-import { RepositoryFactory } from "@factory/RepositoryFactory";
-import { ActivityRepository } from "@repository/ActivityRepository";
+import { RepositoryFactory } from "@domain/factory/RepositoryFactory";
+import { ActivityRepository } from "@domain/repository/ActivityRepository";
 
 export class FinalizeMonthActivities {
     

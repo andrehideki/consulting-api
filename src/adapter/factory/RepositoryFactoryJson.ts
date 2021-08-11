@@ -1,14 +1,14 @@
-import { User } from "@domain/entity/User";
 import { UserRepository } from "@domain/repository/UserRepository";
-import { RepositoryFactory } from "@factory/RepositoryFactory";
-import { ActivityRepositoryJson } from "@repositoryImpl/ActivityRepositoryJson";
-import { ConsultingRepositoryJson } from "@repositoryImpl/ConsultingRepositoryJson";
-import { DataEncriptorBcrypt } from "../../infra/services/DataEncriptorBcrypt";
+import { RepositoryFactory } from "@domain/factory/RepositoryFactory";
+import { ActivityRepositoryJson } from "@adapter/repository/ActivityRepositoryJson";
+import { ConsultingRepositoryJson } from "@adapter/repository/ConsultingRepositoryJson";
+import { UserRepositoryMemory } from "@adapter/repository/UserRepositoryMemory";
+import { DataEncriptor } from "@domain/entity/DataEncriptor";
 
 export class RepositoryFactoryJson implements RepositoryFactory {
     databaseJson: any;
 
-    constructor(databaseJson) {
+    constructor(databaseJson, private dataEncryptor: DataEncriptor) {
         this.databaseJson = JSON.parse(JSON.stringify(databaseJson));
     }
 
@@ -21,20 +21,6 @@ export class RepositoryFactoryJson implements RepositoryFactory {
     }
 
     createUserRepository(): UserRepository {
-        /*
-            1234 = $2b$04$UzfaPfNyxfGVq0ma.RuCrOvCuDhuKjmQjJgLhT6ZhcE9VihFzsZ5G
-            4321 = $2b$04$86GW68Xys0s9XexRe4acq.KAdbuZYDHqfKe6BPWkcnXICL8PVhTaq
-        */
-        const users: User[] = [
-            new User("fulano@mail.com", "$2b$04$UzfaPfNyxfGVq0ma.RuCrOvCuDhuKjmQjJgLhT6ZhcE9VihFzsZ5G", "CONSULTING", new DataEncriptorBcrypt()),
-            new User("beltrano@mail.com", "$2b$04$86GW68Xys0s9XexRe4acq.KAdbuZYDHqfKe6BPWkcnXICL8PVhTaq", "CONSULTING", new DataEncriptorBcrypt()),
-        ];
-        return {
-            async get(email: string): Promise<User> {
-                let user = users.filter(user => user.email.value === email)[0];
-                if (!user) throw new Error("User not found");
-                return user;
-            }
-        };
+        return new UserRepositoryMemory(this.dataEncryptor);
     }
 }

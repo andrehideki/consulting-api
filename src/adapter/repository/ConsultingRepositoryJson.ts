@@ -1,5 +1,5 @@
 import { Consulting } from "@domain/entity/Consulting";
-import { ConsultingRepository } from "@repository/ConsultingRepository";
+import { ConsultingRepository } from "@domain/repository/ConsultingRepository";
 
 
 export class ConsultingRepositoryJson implements ConsultingRepository {

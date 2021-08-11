@@ -1,6 +1,6 @@
-import { ConsultingRepository } from "@repository/ConsultingRepository";
-import { ActivityRepository } from "@repository/ActivityRepository";
-import { UserRepository } from "@repository/UserRepository";
+import { ConsultingRepository } from "@domain/repository/ConsultingRepository";
+import { ActivityRepository } from "@domain/repository/ActivityRepository";
+import { UserRepository } from "@domain/repository/UserRepository";
 
 export interface RepositoryFactory {
     createConsultingRepository(): ConsultingRepository;

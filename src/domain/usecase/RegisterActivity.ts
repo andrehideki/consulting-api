@@ -1,8 +1,8 @@
 import { Activity } from "@domain/entity/Activity";
 import { Tag } from "@domain/entity/Tag";
-import { RepositoryFactory } from "@factory/RepositoryFactory";
-import { ActivityRepository } from "@repository/ActivityRepository";
-import { ConsultingRepository } from "@repository/ConsultingRepository";
+import { RepositoryFactory } from "@domain/factory/RepositoryFactory";
+import { ActivityRepository } from "@domain/repository/ActivityRepository";
+import { ConsultingRepository } from "@domain/repository/ConsultingRepository";
 
 
 export class RegisterActivity {

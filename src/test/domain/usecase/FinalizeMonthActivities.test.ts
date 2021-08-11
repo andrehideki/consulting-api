@@ -1,6 +1,7 @@
 import * as database from "@infra/database/db.json";
 import { RepositoryFactoryJson } from "@adapter/factory/RepositoryFactoryJson";
 import { FinalizeMonthActivities } from "@domain/usecase/FinalizeMonthActivities";
+import { DataEncriptorBcrypt } from "@infra/services/DataEncriptorBcrypt";
 
 let finalizeMonthActivities;
 let activitiesRepository;
@@ -9,7 +10,7 @@ let activitiesRepository;
 describe("Finalize month Activities Test", function() {
    
     beforeEach(async () => {
-        const repositoryFactory = new RepositoryFactoryJson(database);
+        const repositoryFactory = new RepositoryFactoryJson(database, new DataEncriptorBcrypt());
         finalizeMonthActivities = new FinalizeMonthActivities(repositoryFactory);
         activitiesRepository = repositoryFactory.createActivityRepository();
     });

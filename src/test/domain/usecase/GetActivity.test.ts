@@ -1,11 +1,12 @@
 import { GetActivity } from "@domain/usecase/GetActivity";
 import * as database from "@infra/database/db.json";
 import { RepositoryFactoryJson } from "@adapter/factory/RepositoryFactoryJson";
+import { DataEncriptorBcrypt } from "@infra/services/DataEncriptorBcrypt";
 describe("Get Activity", () => {
   let getActivity: GetActivity;
 
   beforeEach(() =>{
-    const repositoryFactory = new RepositoryFactoryJson(database);
+    const repositoryFactory = new RepositoryFactoryJson(database, new DataEncriptorBcrypt());
     getActivity = new GetActivity(repositoryFactory);
   });
   test("Should get an activity by id", async () => {
