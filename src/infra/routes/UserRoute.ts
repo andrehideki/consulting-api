@@ -1,9 +1,11 @@
+import { RepositoryFactory } from "@domain/factory/RepositoryFactory";
 import { UserController } from "src/adapter/controller/UserController";
 
 export class UserRoute {
     private route = "/user";
     private app;
-    private repositoryFactory;
+    private repositoryFactory: RepositoryFactory;
+    
     constructor(app, repositoryFactory) {
         this.app = app;
         this.repositoryFactory = repositoryFactory;
@@ -13,9 +15,7 @@ export class UserRoute {
         this.app.post(`${this.route}`, async (req, res) => {
             try {
                 const userController = new UserController(this.repositoryFactory);
-                console.log("BODY", req.body)
                 const { email, password } = req.body;
-                console.log(email, password);
                 let authenticateUserOutput = await userController.authenticateUser({
                     email, 
                     password

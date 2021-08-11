@@ -18,13 +18,8 @@
     "paths": {
       "@root/*": [ "./" ],
       "@domain/*": [ "./src/domain/*" ],
-      "@entity/*": [ "./src/domain/entity/*" ],
-      "@repository/*": [ "./src/domain/repository/*" ],
-      "@factory/*": [ "./src/domain/factory/*" ],
-      "@valueobject/*": [ "./src/domain/valueobject/*" ],
-      "@repositoryImpl/*": ["./src/adapter/repository/*"],
-      "@factoryImpl/*": ["./src/adapter/factory/*"],
-      "@database/*": ["./src/infra/database/*"]
+      "@adapter/*": ["./src/adapter/*"],
+      "@infra/*": ["./src/infra/*"]
     },                                              
     "esModuleInterop": true, 
     "skipLibCheck": true,

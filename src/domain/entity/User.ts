@@ -16,6 +16,7 @@ export class User {
   }
 
   async authenticate(password: string): Promise<boolean> {
-    return this.encryptor.match(password, this.password);
+    console.log(await this.encryptor.match(password, this.password))
+    return await this.encryptor.match(password, this.password);
   }
 }

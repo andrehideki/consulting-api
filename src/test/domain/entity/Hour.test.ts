@@ -1,4 +1,4 @@
-import { Hour } from "@entity/Hour";
+import { Hour } from "@domain/entity/Hour";
 describe("Hour", () => {
 
     test("Should throw error with undefined or null hour", () => {

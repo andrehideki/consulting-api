@@ -1,5 +1,5 @@
-import { Activity } from "@entity/Activity";
-import { Tag } from "@entity/Tag";
+import { Activity } from "@domain/entity/Activity";
+import { Tag } from "@domain/entity/Tag";
 
 export interface ActivityRepository {
     // Activity

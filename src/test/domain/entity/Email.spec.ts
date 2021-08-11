@@ -1,4 +1,4 @@
-import { Email } from "@entity/Email";
+import { Email } from '@domain/entity/Email';
 
 describe("Email", () => {
     test("Should throw error when email is black", () => {

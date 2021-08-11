@@ -1,4 +1,4 @@
-import { Consulting } from "@entity/Consulting";
+import { Consulting } from "@domain/entity/Consulting";
 
 export interface ConsultingRepository {
     count(): Promise<number>;

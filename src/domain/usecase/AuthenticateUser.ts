@@ -21,8 +21,9 @@ export class AuthenticateUser {
 
   async execute(input: AuthenticateUserInput): Promise<AuthenticateUserOuput> {
     let user = await this.userRepository.get(input.email);
-    console.log("uc", user);
-    if (!!user.authenticate(input.password)) {
+    let isAuthenticated = await user.authenticate(input.password);
+    if (!isAuthenticated) {
+      console.log("here")
       throw new Error("Invalid password");
     }
     return {

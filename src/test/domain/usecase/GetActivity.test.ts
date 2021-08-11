@@ -1,6 +1,6 @@
 import { GetActivity } from "@domain/usecase/GetActivity";
-import * as database from "@database/db.json";
-import { RepositoryFactoryJson } from "@factoryImpl/RepositoryFactoryJson";
+import * as database from "@infra/database/db.json";
+import { RepositoryFactoryJson } from "@adapter/factory/RepositoryFactoryJson";
 describe("Get Activity", () => {
   let getActivity: GetActivity;
 

@@ -1,5 +1,5 @@
-import { Tag } from "@entity/Tag";
-import { Responsible } from "@entity/Responsible";
+import { Tag } from "@domain/entity/Tag";
+import { Responsible } from "@domain/entity/Responsible";
 
 export class Activity {
     id: number;

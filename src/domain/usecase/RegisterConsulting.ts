@@ -1,4 +1,4 @@
-import { Consulting } from "@entity/Consulting";
+import { Consulting } from "@domain/entity/Consulting";
 import { ConsultingRepository } from "@repository/ConsultingRepository";
 import { RepositoryFactory } from "@factory/RepositoryFactory";
 

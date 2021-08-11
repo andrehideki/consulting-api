@@ -1,5 +1,5 @@
-import { User } from "@entity/User";
-import { DataEncriptorBcrypt } from "../../../infra/services/DataEncriptorBcrypt";
+import { User } from "@domain/entity/User";
+import { DataEncriptorBcrypt } from "@infra/services/DataEncriptorBcrypt";
 
 describe("User", () => {
 

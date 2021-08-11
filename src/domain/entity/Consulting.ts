@@ -1,5 +1,5 @@
-import { Name } from "@entity/Name";
-import { Email } from "@entity/Email";
+import { Name } from "@domain/entity/Name";
+import { Email } from "@domain/entity/Email";
 
 export class Consulting {
     id: number;

@@ -1,5 +1,5 @@
-import * as database from "@database/db.json";
-import { RepositoryFactoryJson } from "@factoryImpl/RepositoryFactoryJson";
+import * as database from "@infra/database/db.json";
+import { RepositoryFactoryJson } from "@adapter/factory/RepositoryFactoryJson";
 import { RegisterActivity } from "@domain/usecase/RegisterActivity";
 import { ActivityRepository } from "@domain/repository/ActivityRepository";
 

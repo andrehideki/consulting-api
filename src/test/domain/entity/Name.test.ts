@@ -1,4 +1,4 @@
-import { Name } from "@entity/Name";
+import { Name } from "@domain/entity/Name";
 
 describe("Name", () => {
     test("Shoud create Name with correct First name and last name", () => {

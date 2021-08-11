@@ -1,5 +1,5 @@
-import * as database from "@database/db.json";
-import { RepositoryFactoryJson } from "@factoryImpl/RepositoryFactoryJson";
+import * as database from "@infra/database/db.json";
+import { RepositoryFactoryJson } from "@adapter/factory/RepositoryFactoryJson";
 import { FinalizeMonthActivities } from "@domain/usecase/FinalizeMonthActivities";
 
 let finalizeMonthActivities;
