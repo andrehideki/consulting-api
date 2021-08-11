@@ -1,5 +1,4 @@
-import * as database from "@infra/database/db.json";
-import { RepositoryFactoryJson } from "@adapter/factory/RepositoryFactoryJson";
+import { RepositoryFactoryMemory } from "@adapter/factory/RepositoryFactoryMemory";
 import { RegisterConsulting } from "@domain/usecase/RegisterConsulting";
 import { DataEncriptorBcrypt } from "@infra/services/DataEncriptorBcrypt";
 
@@ -10,7 +9,7 @@ let consultingRepository;
 describe("Register Consulting Test", function() {
     
     beforeEach(async () => {
-        const repositoryFactory = new RepositoryFactoryJson(database, new DataEncriptorBcrypt());
+        const repositoryFactory = new RepositoryFactoryMemory(new DataEncriptorBcrypt());
         registerConsulting = new RegisterConsulting(repositoryFactory);
         consultingRepository = registerConsulting.consultingRepository;
     });

@@ -1,5 +1,4 @@
-import * as database from "@infra/database/db.json";
-import { RepositoryFactoryJson } from "@adapter/factory/RepositoryFactoryJson";
+import { RepositoryFactoryMemory } from "@adapter/factory/RepositoryFactoryMemory";
 import { RegisterActivity } from "@domain/usecase/RegisterActivity";
 import { ActivityRepository } from "@domain/repository/ActivityRepository";
 import { DataEncriptorBcrypt } from "@infra/services/DataEncriptorBcrypt";
@@ -10,7 +9,7 @@ let activityRepository: ActivityRepository;
 describe("Register Activity Test", function () {
 
   beforeEach(async () => {
-    const repositoryFactory = new RepositoryFactoryJson(database, new DataEncriptorBcrypt());
+    const repositoryFactory = new RepositoryFactoryMemory(new DataEncriptorBcrypt());
     registerActivity = new RegisterActivity(repositoryFactory);
     activityRepository = registerActivity.activityRepositoy;
   });
@@ -106,7 +105,7 @@ describe("Register Activity Test", function () {
       responsible: 2,
       amountOfHours: 10
     });
-    const newTag = await activityRepository.findTag(tagName);
+    const newTag = await activityRepository.findTag(tagName.toLowerCase());
     expect(newTag).not.toBeNull();
     expect(newTag[0].name).toBe(tagName.toLowerCase());
   });

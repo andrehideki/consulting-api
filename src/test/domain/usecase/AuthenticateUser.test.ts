@@ -1,5 +1,4 @@
-import * as database from "@infra/database/db.json";
-import { RepositoryFactoryJson } from "@adapter/factory/RepositoryFactoryJson";
+import { RepositoryFactoryMemory } from "@adapter/factory/RepositoryFactoryMemory";
 import { AuthenticateUser } from "@domain/usecase/AuthenticateUser";
 import { DataEncriptorBcrypt } from "@infra/services/DataEncriptorBcrypt";
 
@@ -8,7 +7,7 @@ let authenticateUser: AuthenticateUser;
 describe("User Authentication Test", function() {
    
     beforeEach(async () => {
-        const repositoryFactory = new RepositoryFactoryJson(database, new DataEncriptorBcrypt());
+        const repositoryFactory = new RepositoryFactoryMemory(new DataEncriptorBcrypt());
         authenticateUser = new AuthenticateUser(repositoryFactory);
     });
 

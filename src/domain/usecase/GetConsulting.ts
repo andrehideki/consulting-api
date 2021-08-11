@@ -13,7 +13,7 @@ export class GetConsulting {
         return {
             name: consulting.name.value,
             email: consulting.email.value,
-            birthDate: consulting.birthDate.toString()
+            birthDate: consulting.birthDate.toISOString().substring(0, 10)
         };
     }
 }

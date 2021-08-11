@@ -1,15 +1,14 @@
 import { GetConsulting } from "@domain/usecase/GetConsulting";
-import { RepositoryFactoryJson } from "@adapter/factory/RepositoryFactoryJson";
-import * as database from "@infra/database/db.json";
+import { RepositoryFactoryMemory } from "@adapter/factory/RepositoryFactoryMemory";
 import { DataEncriptorBcrypt } from "@infra/services/DataEncriptorBcrypt";
 
-let getConsulting;
+let getConsulting: GetConsulting;
 
 
 describe("Get Consultings Test", function() {
 
     beforeEach(async () => {
-        const repositoryFactory = new RepositoryFactoryJson(database, new DataEncriptorBcrypt());    
+        const repositoryFactory = new RepositoryFactoryMemory(new DataEncriptorBcrypt());    
         getConsulting = new GetConsulting(repositoryFactory);
     });
 
