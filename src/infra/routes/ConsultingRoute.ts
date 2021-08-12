@@ -1,26 +1,29 @@
+import { APIRoute } from "@infra/webserver/APIRoute";
 import { ConsultingController } from "src/adapter/controller/ConsultingController";
+import { RepositoryFactory } from "@domain/factory/RepositoryFactory";
+import express from 'express';
+import { Request, Response } from "express";
 
+export class ConsultingRoute implements APIRoute {
 
-export class ConsultingRoute {
-    private route = "/consulting";
-    private app;
-    private repositoryFactory;
-    constructor(app, repositoryFactory) {
-        this.app = app;
-        this.repositoryFactory = repositoryFactory;
-    }
+  private route = "/consulting";
+  public router: express.Router;
+  private repositoryFactory;
 
-    async configure() {
-        this.app.get(`${this.route}`, async (req, res) => {
-            try {
-                const consultingController = new ConsultingController(this.repositoryFactory);
-                let getConsultingOutput = await consultingController.getConsulting(req.query.email);
-                res.json(getConsultingOutput);
-            } catch(error) {
-                console.log(error);
-                res.status(404);
-                res.json([]);
-            }
-        });
-    }
+  constructor(repositoryFactory: RepositoryFactory) {
+    this.router = express.Router();
+    this.repositoryFactory = repositoryFactory;
+  }
+
+  configure() {
+    this.router.get(`${this.route}`, async (req: Request, res: Response, next: any) => {
+      try {
+        const consultingController = new ConsultingController(this.repositoryFactory);
+        let getConsultingOutput = await consultingController.getConsulting(req.query.email);
+        res.json(getConsultingOutput);
+      } catch (error) {
+        next(error);
+      }
+    });
+  }
 }
