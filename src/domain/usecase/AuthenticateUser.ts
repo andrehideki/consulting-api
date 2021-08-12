@@ -1,3 +1,5 @@
+import TokenGenerator from "@domain/entity/TokenGenerator";
+import { AuthenticationError } from "@domain/error/AuthenticationError";
 import RepositoryFactory from "@domain/factory/RepositoryFactory";
 import { UserRepository } from "@domain/repository/UserRepository";
 
@@ -9,13 +11,15 @@ export interface AuthenticateUserInput {
 export interface AuthenticateUserOuput {
   email: string;
   userCategory: string;
+  token: string;
 }
 
 export class AuthenticateUser {
 
   userRepository: UserRepository;
 
-  constructor(repositoryFactory: RepositoryFactory) {
+  constructor(repositoryFactory: RepositoryFactory, 
+    private tokenGenerator: TokenGenerator) {
     this.userRepository = repositoryFactory.createUserRepository();
   }
 
@@ -23,12 +27,15 @@ export class AuthenticateUser {
     let user = await this.userRepository.get(input.email);
     let isAuthenticated = await user.authenticate(input.password);
     if (!isAuthenticated) {
-        throw new Error("Invalid password");
+        throw new AuthenticationError("Invalid password");
     }
     return {
       email: user.email.value,
-      userCategory: user.category.toString()
-    }
+      userCategory: user.category.toString(),
+      token: this.tokenGenerator.generate({ 
+        email: user.email.value,
+        userCategory: user.category.toString()
+      })
+    };
   }
-
 }

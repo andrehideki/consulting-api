@@ -26,7 +26,7 @@ export class ConsultingRepositoryMemory implements ConsultingRepository {
     }
     
     async getByEmail(email: String): Promise<Consulting> {
-      let consulting = this.consultings.find(consulting => consulting.email.value === email);
+      let consulting = this.consultings.find(consulting => consulting.email.equals(email));
       if (!consulting) throw new Error("Consulting not found");
       return consulting;
     }

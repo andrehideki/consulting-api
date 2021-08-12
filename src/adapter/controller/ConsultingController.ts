@@ -5,8 +5,8 @@ export class ConsultingController {
   constructor(private repositoryFactory: RepositoryFactory) { }
 
   async getConsulting(params: any) {
-    const getConsulting = new GetConsulting(this.repositoryFactory);
-    let consulting = await getConsulting.execute(params.email);
+    const getConsulting: GetConsulting = new GetConsulting(this.repositoryFactory);
+    let consulting = await getConsulting.execute({ email: params.email });
     return consulting;
   }
 }

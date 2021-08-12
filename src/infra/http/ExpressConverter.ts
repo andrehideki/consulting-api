@@ -1,3 +1,4 @@
+import { AuthenticationError } from "@domain/error/AuthenticationError";
 import express from "express";
 
 export default class ExpressConverter {
@@ -8,7 +9,22 @@ export default class ExpressConverter {
         const result = await fn(req.query, req.body, req.headers);
         resp.json(result);
       } catch (e) {
-        resp.status(422);
+        if (e instanceof AuthenticationError) resp.status(401);
+        else resp.status(422);
+        resp.json({
+          message: e.message
+        });
+      }
+    }
+  }
+
+  static filter(fn: Function) {
+    return async function(req: express.Request, resp: express.Response, next: express.NextFunction) {
+      try {
+        await fn(req.query, req.body, req.headers);
+        next();
+      } catch (e) {
+        resp.status(402);
         resp.json({
           message: e.message
         });
