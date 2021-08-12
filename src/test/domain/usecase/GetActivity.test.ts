@@ -1,6 +1,6 @@
 import { GetActivity } from "@domain/usecase/GetActivity";
-import { RepositoryFactoryMemory } from "@adapter/factory/RepositoryFactoryMemory";
-import { DataEncriptorBcrypt } from "@infra/services/DataEncriptorBcrypt";
+import RepositoryFactoryMemory from "@adapter/factory/RepositoryFactoryMemory";
+import DataEncriptorBcrypt from "@infra/services/DataEncriptorBcrypt";
 describe("Get Activity", () => {
   let getActivity: GetActivity;
 

@@ -1,6 +1,6 @@
-import { RepositoryFactoryMemory } from "@adapter/factory/RepositoryFactoryMemory";
+import RepositoryFactoryMemory from "@adapter/factory/RepositoryFactoryMemory";
 import { AuthenticateUser } from "@domain/usecase/AuthenticateUser";
-import { DataEncriptorBcrypt } from "@infra/services/DataEncriptorBcrypt";
+import DataEncriptorBcrypt from "@infra/services/DataEncriptorBcrypt";
 
 let authenticateUser: AuthenticateUser;
 

@@ -1,5 +1,5 @@
 import { UserRepository } from "@domain/repository/UserRepository";
-import { RepositoryFactory } from "@domain/factory/RepositoryFactory";
+import RepositoryFactory from "@domain/factory/RepositoryFactory";
 import { DataEncriptor } from "@domain/entity/DataEncriptor";
 
 import { ActivityRepositoryMemory } from "@adapter/repository/ActivityRepositoryMemory";
@@ -7,7 +7,7 @@ import { ConsultingRepositoryMemory } from "@adapter/repository/ConsultingReposi
 import { UserRepositoryMemory } from "@adapter/repository/UserRepositoryMemory";
 
 
-export class RepositoryFactoryMemory implements RepositoryFactory {
+export default class RepositoryFactoryMemory implements RepositoryFactory {
 
   constructor(private dataEncryptor: DataEncriptor) {}
 

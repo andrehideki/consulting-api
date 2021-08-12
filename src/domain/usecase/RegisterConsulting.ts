@@ -1,6 +1,6 @@
 import { Consulting } from "@domain/entity/Consulting";
 import { ConsultingRepository } from "@domain/repository/ConsultingRepository";
-import { RepositoryFactory } from "@domain/factory/RepositoryFactory";
+import RepositoryFactory from "@domain/factory/RepositoryFactory";
 
 export class RegisterConsulting {
     consultingRepository: ConsultingRepository;

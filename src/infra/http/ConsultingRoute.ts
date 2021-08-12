@@ -1,6 +1,6 @@
-import { APIRoute } from "@infra/webserver/APIRoute";
+import { APIRoute } from "@infra/http/APIRoute";
 import { ConsultingController } from "src/adapter/controller/ConsultingController";
-import { RepositoryFactory } from "@domain/factory/RepositoryFactory";
+import RepositoryFactory from "@domain/factory/RepositoryFactory";
 import express from 'express';
 import { Request, Response } from "express";
 

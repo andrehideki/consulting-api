@@ -1,7 +1,7 @@
-import { RepositoryFactory } from "@domain/factory/RepositoryFactory";
+import RepositoryFactory from "@domain/factory/RepositoryFactory";
 import { UserController } from "@adapter/controller/UserController";
 import express from 'express';
-import { APIRoute } from "@infra/webserver/APIRoute";
+import { APIRoute } from "@infra/http/APIRoute";
 
 export class UserRoute implements APIRoute {
 

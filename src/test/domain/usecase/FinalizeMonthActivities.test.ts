@@ -1,6 +1,6 @@
-import { RepositoryFactoryMemory } from "@adapter/factory/RepositoryFactoryMemory";
+import RepositoryFactoryMemory from "@adapter/factory/RepositoryFactoryMemory";
 import { FinalizeMonthActivities } from "@domain/usecase/FinalizeMonthActivities";
-import { DataEncriptorBcrypt } from "@infra/services/DataEncriptorBcrypt";
+import DataEncriptorBcrypt from "@infra/services/DataEncriptorBcrypt";
 
 let finalizeMonthActivities;
 let activitiesRepository;

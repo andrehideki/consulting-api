@@ -1,7 +1,7 @@
-import { RepositoryFactoryMemory } from "@adapter/factory/RepositoryFactoryMemory";
+import RepositoryFactoryMemory from "@adapter/factory/RepositoryFactoryMemory";
 import { RegisterActivity } from "@domain/usecase/RegisterActivity";
 import { ActivityRepository } from "@domain/repository/ActivityRepository";
-import { DataEncriptorBcrypt } from "@infra/services/DataEncriptorBcrypt";
+import DataEncriptorBcrypt from "@infra/services/DataEncriptorBcrypt";
 
 let registerActivity: RegisterActivity;
 let activityRepository: ActivityRepository;

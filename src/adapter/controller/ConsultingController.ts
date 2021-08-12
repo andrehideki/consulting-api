@@ -1,15 +1,12 @@
+import RepositoryFactory  from "@domain/factory/RepositoryFactory";
 import { GetConsulting } from "@domain/usecase/GetConsulting";
 
 export class ConsultingController {
-    repositoryFactory;
+  constructor(private repositoryFactory: RepositoryFactory) { }
 
-    constructor(repositoryFactory) {
-        this.repositoryFactory = repositoryFactory;
-    }
-
-    async getConsulting(emailAddress) {
-        const getConsulting = new GetConsulting(this.repositoryFactory);
-        let consulting = await getConsulting.execute(emailAddress);
-        return consulting;
-    }
+  async getConsulting(params: any) {
+    const getConsulting = new GetConsulting(this.repositoryFactory);
+    let consulting = await getConsulting.execute(params.email);
+    return consulting;
+  }
 }

@@ -1,16 +1,16 @@
-import { RepositoryFactory } from "@domain/factory/RepositoryFactory";
-import { AuthenticateUser, AuthenticateUserInput } from "@domain/usecase/AuthenticateUser";
+import RepositoryFactory from "@domain/factory/RepositoryFactory";
+import { AuthenticateUser } from "@domain/usecase/AuthenticateUser";
 
 export class UserController {
-    repositoryFactory: RepositoryFactory;
+    
+    constructor(private repositoryFactory: RepositoryFactory) {}
 
-    constructor(repositoryFactory: RepositoryFactory) {
-        this.repositoryFactory = repositoryFactory;
-    }
-
-    async authenticateUser(input: AuthenticateUserInput) {
+    async authenticateUser(params: any, body: any) {
         const authenticateUser = new AuthenticateUser(this.repositoryFactory);
-        let output = await authenticateUser.execute(input);
+        let output = await authenticateUser.execute({
+          email: body.email,
+          password: body.password
+        });
         return output;
     }
 }

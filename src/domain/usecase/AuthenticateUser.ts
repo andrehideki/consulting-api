@@ -1,4 +1,4 @@
-import { RepositoryFactory } from "@domain/factory/RepositoryFactory";
+import RepositoryFactory from "@domain/factory/RepositoryFactory";
 import { UserRepository } from "@domain/repository/UserRepository";
 
 export interface AuthenticateUserInput {

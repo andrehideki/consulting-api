@@ -1,6 +1,6 @@
 import { ActivityRepository } from "@domain/repository/ActivityRepository";
 import { ConsultingRepository } from "@domain/repository/ConsultingRepository";
-import { RepositoryFactory } from "@domain/factory/RepositoryFactory";
+import RepositoryFactory from "@domain/factory/RepositoryFactory";
 
 export class GetConsultingActivities {
   activityRepository: ActivityRepository;
