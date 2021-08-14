@@ -7,7 +7,8 @@ import DataEncriptorBcrypt from "@infra/services/DataEncriptorBcrypt";
 import TokenGeneratorJWT from '@infra/services/TokenGeneratorJWT';
 
 const dataEncriptor: DataEncriptor = new DataEncriptorBcrypt();
-const tokenGenerator: TokenGenerator = new TokenGeneratorJWT("CONSULTING_API_KEY");
+// const tokenGenerator: TokenGenerator = new TokenGeneratorJWT("CONSULTING_API_KEY");
+const tokenGenerator: TokenGenerator = new TokenGeneratorJWT("CHAVE", "10s");
 const repositoryFactory: RepositoryFactory = new RepositoryFactoryMemory(dataEncriptor);
 
 HttpServer.start(repositoryFactory, tokenGenerator);

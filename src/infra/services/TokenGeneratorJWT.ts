@@ -3,12 +3,12 @@ import jwt from "jsonwebtoken";
 
 export default class TokenGeneratorJWT implements TokenGenerator {
 
-  constructor(private key: string) {
+  constructor(private key: string,
+    private expiration: string) {
   }
 
   generate(value: any): string {
-    // return jwt.sign(value, this.key, { expiresIn: "1h" });
-    return jwt.sign(value, this.key, { expiresIn: "10s" });
+    return jwt.sign(value, this.key, { expiresIn: this.expiration });
   }
   
   decode(token: any): any {

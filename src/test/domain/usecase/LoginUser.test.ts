@@ -13,7 +13,7 @@ describe("User Authentication Test", function () {
 
   beforeEach(async () => {
     const repositoryFactory = new RepositoryFactoryMemory(new DataEncriptorBcrypt());
-    tokenGenerator = new TokenGeneratorJWT("CHAVE");
+    tokenGenerator = new TokenGeneratorJWT("CHAVE", "10s");
     loginUser = new LoginUser(repositoryFactory, tokenGenerator);
   });
 
