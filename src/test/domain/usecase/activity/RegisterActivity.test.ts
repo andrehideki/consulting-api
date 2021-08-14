@@ -1,5 +1,5 @@
 import RepositoryFactoryMemory from "@adapter/factory/RepositoryFactoryMemory";
-import { RegisterActivity } from "@domain/usecase/RegisterActivity";
+import { RegisterActivity } from "@domain/usecase/activity/RegisterActivity";
 import { ActivityRepository } from "@domain/repository/ActivityRepository";
 import DataEncriptorBcrypt from "@infra/services/DataEncriptorBcrypt";
 

@@ -1,6 +1,6 @@
 import RepositoryFactoryMemory from "@adapter/factory/RepositoryFactoryMemory";
 import TokenGenerator from "@domain/entity/TokenGenerator";
-import LoginUser from "@domain/usecase/LoginUser";
+import LoginUser from "@domain/usecase/user/LoginUser";
 import DataEncriptorBcrypt from "@infra/services/DataEncriptorBcrypt";
 import TokenGeneratorJWT from "@infra/services/TokenGeneratorJWT";
 

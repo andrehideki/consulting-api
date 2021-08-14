@@ -1,6 +1,6 @@
 import TokenGenerator from "@domain/entity/TokenGenerator";
 import RepositoryFactory from "@domain/factory/RepositoryFactory";
-import LoginUser from "@domain/usecase/LoginUser";
+import LoginUser from "@domain/usecase/user/LoginUser";
 
 export class UserController {
 

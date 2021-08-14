@@ -1,5 +1,5 @@
 import RepositoryFactoryMemory from "@adapter/factory/RepositoryFactoryMemory";
-import { RegisterConsulting } from "@domain/usecase/RegisterConsulting";
+import { RegisterConsulting } from "@domain/usecase/consulting/RegisterConsulting";
 import DataEncriptorBcrypt from "@infra/services/DataEncriptorBcrypt";
 
 

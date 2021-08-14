@@ -1,5 +1,5 @@
 import RepositoryFactory  from "@domain/factory/RepositoryFactory";
-import { GetConsulting } from "@domain/usecase/GetConsulting";
+import { GetConsulting } from "@domain/usecase/consulting/GetConsulting";
 
 export class ConsultingController {
   constructor(private repositoryFactory: RepositoryFactory) { }

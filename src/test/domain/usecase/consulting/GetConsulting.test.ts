@@ -1,4 +1,4 @@
-import { GetConsulting } from "@domain/usecase/GetConsulting";
+import { GetConsulting } from "@domain/usecase/consulting/GetConsulting";
 import RepositoryFactoryMemory from "@adapter/factory/RepositoryFactoryMemory";
 import DataEncriptorBcrypt from "@infra/services/DataEncriptorBcrypt";
 

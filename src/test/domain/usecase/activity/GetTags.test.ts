@@ -1,5 +1,5 @@
 import RepositoryFactoryMemory from "@adapter/factory/RepositoryFactoryMemory";
-import { GetTags } from "@domain/usecase/GetTags";
+import { GetTags } from "@domain/usecase/activity/GetTags";
 import DataEncriptorBcrypt from "@infra/services/DataEncriptorBcrypt";
 
 let getTags;
