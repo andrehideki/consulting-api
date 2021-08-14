@@ -14,7 +14,7 @@ export default class Router {
     const securityController = new SecurityController(repositoryFactory);
     const userController = new UserController(repositoryFactory, tokenGenerator);
     const consultingController = new ConsultingController(repositoryFactory);
-    // router.all("*", ExpressConverter.filter(securityController.isAuthenticated.bind(securityController)));
+    router.all("*", ExpressConverter.filter(securityController.isAuthenticated.bind(securityController)));
     router.post("/login", ExpressConverter.authenticate(userController.authenticateUser.bind(userController)));
     router.post("/user", ExpressConverter.execute(userController.authenticateUser.bind(userController)));
     router.get("/consulting", ExpressConverter.execute(consultingController.getConsulting.bind(consultingController)));

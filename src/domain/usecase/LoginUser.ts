@@ -14,7 +14,7 @@ export interface AuthenticateUserOuput {
   token: string;
 }
 
-export class AuthenticateUser {
+export default class LoginUser {
 
   userRepository: UserRepository;
 

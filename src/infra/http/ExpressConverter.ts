@@ -42,7 +42,7 @@ export default class ExpressConverter {
         await fn(req.query, req.body, req.headers);
         next();
       } catch (e) {
-        resp.status(402);
+        resp.status(422);
         resp.json({
           message: e.message
         });

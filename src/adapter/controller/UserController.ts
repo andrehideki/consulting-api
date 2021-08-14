@@ -1,6 +1,6 @@
 import TokenGenerator from "@domain/entity/TokenGenerator";
 import RepositoryFactory from "@domain/factory/RepositoryFactory";
-import { AuthenticateUser } from "@domain/usecase/AuthenticateUser";
+import LoginUser from "@domain/usecase/LoginUser";
 
 export class UserController {
 
@@ -9,7 +9,7 @@ export class UserController {
     private tokenGenerator: TokenGenerator) { }
 
   async authenticateUser(params: any, body: any) {
-    const authenticateUser = new AuthenticateUser(this.repositoryFactory, this.tokenGenerator);
+    const authenticateUser = new LoginUser(this.repositoryFactory, this.tokenGenerator);
     return await authenticateUser.execute({
       email: body.email,
       password: body.password
