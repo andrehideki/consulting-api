@@ -1,6 +1,6 @@
 import { User } from "@domain/entity/User";
 import { UserRepository } from "@domain/repository/UserRepository";
-import { DataEncriptor } from "@domain/entity/DataEncriptor";
+import DataEncriptor from "@domain/entity/DataEncriptor";
 
 
 export class UserRepositoryMemory implements UserRepository {

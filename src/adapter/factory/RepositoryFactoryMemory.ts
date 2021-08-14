@@ -1,6 +1,6 @@
 import { UserRepository } from "@domain/repository/UserRepository";
 import RepositoryFactory from "@domain/factory/RepositoryFactory";
-import { DataEncriptor } from "@domain/entity/DataEncriptor";
+import DataEncriptor from "@domain/entity/DataEncriptor";
 
 import { ActivityRepositoryMemory } from "@adapter/repository/ActivityRepositoryMemory";
 import { ConsultingRepositoryMemory } from "@adapter/repository/ConsultingRepositoryMemory";

@@ -8,6 +8,24 @@ export default class ExpressConverter {
       try {
         const result = await fn(req.query, req.body, req.headers);
         resp.json(result);
+        next();
+      } catch (e) {
+        if (e instanceof AuthenticationError) resp.status(401);
+        else resp.status(422);
+        resp.json({
+          message: e.message
+        });
+      }
+    }
+  }
+
+  static authenticate(fn: Function) {
+    return async function(req: express.Request, resp: express.Response, next: express.NextFunction) {
+      try {
+        const result = await fn(req.query, req.body, req.headers);
+        resp.cookie('auth', result.token);
+        resp.json(result);
+        next();
       } catch (e) {
         if (e instanceof AuthenticationError) resp.status(401);
         else resp.status(422);

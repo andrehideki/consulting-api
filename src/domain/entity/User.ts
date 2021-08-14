@@ -1,6 +1,6 @@
 import { Email } from "@domain/entity/Email";
 import { UserCategory, getUserCategory } from "@domain/vo/UserCategory";
-import { DataEncriptor } from "./DataEncriptor";
+import DataEncriptor from "./DataEncriptor";
 
 export class User {
   email: Email;

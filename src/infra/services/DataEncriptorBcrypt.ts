@@ -1,4 +1,4 @@
-import { DataEncriptor } from "@domain/entity/DataEncriptor";
+import DataEncriptor from "@domain/entity/DataEncriptor";
 import * as bcrypt from "bcrypt";
 
 export default class DataEncriptorBcrypt implements DataEncriptor {

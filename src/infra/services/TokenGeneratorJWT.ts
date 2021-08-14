@@ -7,7 +7,8 @@ export default class TokenGeneratorJWT implements TokenGenerator {
   }
 
   generate(value: any): string {
-    return jwt.sign(value, this.key, { expiresIn: "1h" });
+    // return jwt.sign(value, this.key, { expiresIn: "1h" });
+    return jwt.sign(value, this.key, { expiresIn: "10s" });
   }
   
   decode(token: any): any {
