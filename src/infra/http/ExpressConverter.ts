@@ -39,7 +39,7 @@ export default class ExpressConverter {
   static filter(fn: Function) {
     return async function(req: express.Request, resp: express.Response, next: express.NextFunction) {
       try {
-        await fn(req.query, req.body, req.headers);
+        await fn(req.query, req.body, req.headers, req.cookies);
         next();
       } catch (e) {
         resp.status(422);

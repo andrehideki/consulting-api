@@ -11,11 +11,11 @@ export default class Router {
   
   static build(repositoryFactory: RepositoryFactory, tokenGenerator: TokenGenerator): express.Router {
     const router = express.Router();
-    const securityController = new SecurityController(repositoryFactory);
+    const securityController = new SecurityController(repositoryFactory, tokenGenerator);
     const userController = new UserController(repositoryFactory, tokenGenerator);
     const consultingController = new ConsultingController(repositoryFactory);
-    router.all("*", ExpressConverter.filter(securityController.isAuthenticated.bind(securityController)));
     router.post("/login", ExpressConverter.authenticate(userController.authenticateUser.bind(userController)));
+    router.all("*", ExpressConverter.filter(securityController.isAuthenticated.bind(securityController)));
     router.post("/user", ExpressConverter.execute(userController.authenticateUser.bind(userController)));
     router.get("/consulting", ExpressConverter.execute(consultingController.getConsulting.bind(consultingController)));
     return router;
