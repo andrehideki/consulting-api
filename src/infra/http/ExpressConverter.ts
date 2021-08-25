@@ -24,8 +24,7 @@ export default class ExpressConverter {
       try {
         const result = await fn(req.query, req.body, req.headers);
         resp.cookie('auth', result.token);
-        resp.json(result);
-        next();
+        resp.send(result);
       } catch (e) {
         if (e instanceof AuthenticationError) resp.status(401);
         else resp.status(422);

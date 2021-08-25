@@ -4,7 +4,6 @@ import DataEncriptorBcrypt from "@infra/services/DataEncriptorBcrypt";
 
 let getConsulting: GetConsulting;
 
-
 describe("Get Consultings Test", function() {
 
     beforeEach(async () => {

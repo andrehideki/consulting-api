@@ -13,6 +13,15 @@ export default class HttpServer {
     app.use(express.json());
     app.use(cookieParser());
     app.use(cors());
+    app.all('*', function (req, res, next) {
+      res.header('Access-Control-Allow-Origin', '*');
+      res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
+      res.header('Access-Control-Allow-Headers', 'Content-Type,authentication');
+      next();
+    });
+    app.options("*", function (req, res) {
+        res.end();
+    });
     app.use((req: express.Request, resp: express.Response, next: express.NextFunction) => {
       console.log(`${req.method} > ${req.get('host') + req.originalUrl}`);
       next();
