@@ -19,7 +19,7 @@ export default class Router {
     router.post("/token", ExpressConverter.execute(securityController.isTokenValid.bind(securityController)));
     router.post("/login", ExpressConverter.authenticate(userController.authenticateUser.bind(userController)));
     router.all("*", ExpressConverter.filter(securityController.isAuthenticated.bind(securityController)));
-    router.post("/user", ExpressConverter.execute(userController.authenticateUser.bind(userController)));
+    // router.post("/user", ExpressConverter.execute(userController.authenticateUser.bind(userController)));
     router.get("/consulting", ExpressConverter.execute(consultingController.getConsulting.bind(consultingController)));
     router.get("/consulting/:consultingId/activity", ExpressConverter.execute(activityController.getConsultingActivities.bind(activityController)));
     return router;
