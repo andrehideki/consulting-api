@@ -2,6 +2,12 @@ import { ActivityRepository } from "@domain/repository/ActivityRepository";
 import { ConsultingRepository } from "@domain/repository/ConsultingRepository";
 import RepositoryFactory from "@domain/factory/RepositoryFactory";
 
+export interface GetConsultingActivitiesInput {
+  consultingId: number;
+  month: number;
+  year: number;
+}
+
 export class GetConsultingActivities {
   activityRepository: ActivityRepository;
   consultingRepository: ConsultingRepository
@@ -11,8 +17,8 @@ export class GetConsultingActivities {
     this.consultingRepository = repositoryFactory.createConsultingRepository();
   }
 
-  async execute({ consultingId, month, year }) {
-    const activities = await this.activityRepository.findActivities(consultingId, month, year);
+  async execute(input: GetConsultingActivitiesInput) {
+    const activities = await this.activityRepository.findActivities(input.consultingId, input.month, input.year);
     return activities.map(atv => {
       return {
         id: atv.id,

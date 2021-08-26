@@ -6,7 +6,7 @@ export default class ExpressConverter {
   static execute(fn: Function) {
     return async function(req: express.Request, resp: express.Response, next: express.NextFunction) {
       try {
-        const result = await fn(req.query, req.body, req.headers);
+        const result = await fn(req.query, req.body, req.params, req.headers);
         resp.json(result);
         next();
       } catch (e) {
