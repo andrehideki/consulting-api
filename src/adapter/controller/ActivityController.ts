@@ -1,5 +1,6 @@
 import RepositoryFactory  from "@domain/factory/RepositoryFactory";
 import { GetConsultingActivities } from "@domain/usecase/activity/GetConsultingActivities";
+import { GetTags } from "@domain/usecase/activity/GetTags";
 
 export class AcvitivityController {
 
@@ -15,5 +16,11 @@ export class AcvitivityController {
       year: parseInt(year) 
     });
     return activites;
+  }
+
+  async getTags({ tagName }): Promise<any> {
+    const getTags: GetTags = new GetTags(this.repositoryFactory);
+    const tags = getTags.execute(tagName);
+    return tags;
   }
 }
