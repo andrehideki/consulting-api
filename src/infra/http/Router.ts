@@ -21,6 +21,7 @@ export default class Router {
     router.all("*", ExpressConverter.filter(securityController.isAuthenticated.bind(securityController)));
     // router.post("/user", ExpressConverter.execute(userController.authenticateUser.bind(userController)));
     router.get("/consulting", ExpressConverter.execute(consultingController.getConsulting.bind(consultingController)));
+    router.post("/consulting", ExpressConverter.execute(consultingController.registerConsulting.bind(consultingController)));
     router.get("/consulting/:consultingId/activity", ExpressConverter.execute(activityController.getConsultingActivities.bind(activityController)));
     return router;
   }

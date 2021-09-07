@@ -10,6 +10,7 @@ export default class ExpressConverter {
         resp.json(result);
         next();
       } catch (e) {
+        console.error(e)
         if (e instanceof AuthenticationError) resp.status(401);
         else resp.status(422);
         resp.json({
