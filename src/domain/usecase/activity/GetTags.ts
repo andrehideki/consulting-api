@@ -8,8 +8,8 @@ export class GetTags {
         this.activityRepository = repositoryFactory.createActivityRepository();        
     }
 
-    async execute(tagName): Promise<any> {
-        let tags;
+    async execute(tagName: string): Promise<string[]> {
+        let tags = [];
         if (!tagName) {
             tags = await this.activityRepository.getAllTags();
         } else {
