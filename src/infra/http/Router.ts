@@ -23,6 +23,7 @@ export default class Router {
     router.get('/consulting', ExpressConverter.execute(consultingController.getConsulting.bind(consultingController)));
     router.post('/consulting', ExpressConverter.execute(consultingController.registerConsulting.bind(consultingController)));
     router.get('/consulting/:consultingId/activity', ExpressConverter.execute(activityController.getConsultingActivities.bind(activityController)));
+    router.get('/activity/:id', ExpressConverter.execute(activityController.getActivity.bind(activityController)));
     router.get('/activity/tag', ExpressConverter.execute(activityController.getTags.bind(activityController)));
     return router;
   }

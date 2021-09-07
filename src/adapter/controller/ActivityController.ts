@@ -1,4 +1,5 @@
-import RepositoryFactory  from "@domain/factory/RepositoryFactory";
+import RepositoryFactory from "@domain/factory/RepositoryFactory";
+import { GetActivity } from "@domain/usecase/activity/GetActivity";
 import { GetConsultingActivities } from "@domain/usecase/activity/GetConsultingActivities";
 import { GetTags } from "@domain/usecase/activity/GetTags";
 
@@ -6,14 +7,20 @@ export class AcvitivityController {
 
   constructor(private repositoryFactory: RepositoryFactory) { }
 
+  async getActivity(query: any, body: any, { id }) {
+    const getActivity: GetActivity = new GetActivity(this.repositoryFactory);
+    const activity = await getActivity.execute(parseInt(id));
+    return activity;
+  }
+
   async getConsultingActivities(query: any, body: any, params: any) {
     const { consultingId } = params;
     const { month, year } = query;
     const getConsultingActivities = new GetConsultingActivities(this.repositoryFactory);
-    let activites = await getConsultingActivities.execute({ 
-      consultingId: parseInt(consultingId), 
-      month: parseInt(month), 
-      year: parseInt(year) 
+    let activites = await getConsultingActivities.execute({
+      consultingId: parseInt(consultingId),
+      month: parseInt(month),
+      year: parseInt(year)
     });
     return activites;
   }

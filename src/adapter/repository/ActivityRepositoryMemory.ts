@@ -28,7 +28,8 @@ export class ActivityRepositoryMemory implements ActivityRepository {
   }
   
   async getActivity(activityId: number): Promise<Activity> {
-    let activity = this.activities.find(activity => activity.id === activityId);
+    let activity = this.activities.find(activity => activity.id == activityId);
+    console.log(this.activities);
     if (!activity) throw new Error("Activity not found");
     return activity;
   }
