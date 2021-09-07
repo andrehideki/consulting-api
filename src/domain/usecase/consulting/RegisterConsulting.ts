@@ -18,7 +18,6 @@ export class RegisterConsulting {
   }
 
   async execute({ firstName, lastName, birthDate, emailAddress }: RegisterConsultingInput) {
-    console.log(firstName, lastName, birthDate, emailAddress)
     let consulting = new Consulting(undefined, firstName, lastName, emailAddress, new Date(`${birthDate}:`));
     consulting = await this.consultingRepository.save(consulting);
     return {

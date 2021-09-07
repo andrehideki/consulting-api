@@ -26,7 +26,6 @@ export class RegisterActivity {
   }
 
   async execute({ name, description, date, consultingId, amountOfHours, responsibleId, tags }: RegisterActivityInput) {
-    console.log({ name, description, date, consultingId, amountOfHours, responsibleId, tags })
     const consulting = await this.consultingRepository.getById(consultingId);
     const responsible = new Responsible(responsibleId, ResponsibleCategory.CONSULTING);
     let activity = new Activity(

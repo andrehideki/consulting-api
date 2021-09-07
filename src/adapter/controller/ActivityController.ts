@@ -1,4 +1,5 @@
 import RepositoryFactory from "@domain/factory/RepositoryFactory";
+import { FinalizeMonthActivities } from "@domain/usecase/activity/FinalizeMonthActivities";
 import { GetActivity } from "@domain/usecase/activity/GetActivity";
 import { GetConsultingActivities } from "@domain/usecase/activity/GetConsultingActivities";
 import { GetTags } from "@domain/usecase/activity/GetTags";
@@ -38,4 +39,11 @@ export default class AcvitivityController {
     return tags;
   }
 
+  async finalizeMonthActivities(query: any, { consultingEmail }, { month, year }): Promise<any> {
+    const finalizeMonthActivities: FinalizeMonthActivities = new FinalizeMonthActivities(this.repositoryFactory);
+    await finalizeMonthActivities.execute({ 
+      month: parseInt(month), 
+      year: parseInt(year), 
+      consultingEmail });
+  }
 }
