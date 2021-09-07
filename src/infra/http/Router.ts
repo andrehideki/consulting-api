@@ -2,11 +2,11 @@ import RepositoryFactory from '@domain/factory/RepositoryFactory';
 import TokenGenerator from '@domain/entity/TokenGenerator';
 import { ConsultingController } from '@adapter/controller/ConsultingController';
 import { UserController } from '@adapter/controller/UserController';
+import AcvitivityController from '@adapter/controller/ActivityController';
 import SecurityController from '@adapter/controller/SecurityController';
 import ExpressConverter from '@infra/http/ExpressConverter';
 
 import express from 'express';
-import { AcvitivityController } from '@adapter/controller/ActivityController';
 
 export default class Router {
   
@@ -23,6 +23,7 @@ export default class Router {
     router.get('/consulting', ExpressConverter.execute(consultingController.getConsulting.bind(consultingController)));
     router.post('/consulting', ExpressConverter.execute(consultingController.registerConsulting.bind(consultingController)));
     router.get('/consulting/:consultingId/activity', ExpressConverter.execute(activityController.getConsultingActivities.bind(activityController)));
+    router.post('/activity', ExpressConverter.execute(activityController.registerActivity.bind(activityController)));
     router.get('/activity/:id', ExpressConverter.execute(activityController.getActivity.bind(activityController)));
     router.get('/activity/tag', ExpressConverter.execute(activityController.getTags.bind(activityController)));
     return router;

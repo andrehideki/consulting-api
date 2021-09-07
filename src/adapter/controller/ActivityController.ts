@@ -2,8 +2,9 @@ import RepositoryFactory from "@domain/factory/RepositoryFactory";
 import { GetActivity } from "@domain/usecase/activity/GetActivity";
 import { GetConsultingActivities } from "@domain/usecase/activity/GetConsultingActivities";
 import { GetTags } from "@domain/usecase/activity/GetTags";
+import { RegisterActivity } from "@domain/usecase/activity/RegisterActivity";
 
-export class AcvitivityController {
+export default class AcvitivityController {
 
   constructor(private repositoryFactory: RepositoryFactory) { }
 
@@ -25,9 +26,16 @@ export class AcvitivityController {
     return activites;
   }
 
+  async registerActivity(query: any, { name, description, date, consultingId, amountOfHours, responsibleId, tags }) {
+    const registerActivity: RegisterActivity = new RegisterActivity(this.repositoryFactory);
+    const activity = await registerActivity.execute({ name, description, date, consultingId, amountOfHours, responsibleId, tags });
+    return activity;
+  }
+
   async getTags({ tagName }): Promise<any> {
     const getTags: GetTags = new GetTags(this.repositoryFactory);
     const tags = getTags.execute(tagName);
     return tags;
   }
+
 }

@@ -1,9 +1,20 @@
 import { Activity } from "@domain/entity/Activity";
+import { Responsible } from "@domain/entity/Responsible";
 import { Tag } from "@domain/entity/Tag";
 import RepositoryFactory from "@domain/factory/RepositoryFactory";
 import { ActivityRepository } from "@domain/repository/ActivityRepository";
 import { ConsultingRepository } from "@domain/repository/ConsultingRepository";
+import { ResponsibleCategory } from "@domain/valueobject/ReponsibleCategory";
 
+export interface RegisterActivityInput {
+  name: string;
+  description?: string;
+  date: string;
+  consultingId: number;
+  amountOfHours: number;
+  responsibleId: number;
+  tags?: string[];
+}
 
 export class RegisterActivity {
   activityRepositoy: ActivityRepository;
@@ -14,9 +25,11 @@ export class RegisterActivity {
     this.consultingRepository = repositoryFactory.createConsultingRepository();
   }
 
-  async execute({ name, description, date, consultingId, amountOfHours, responsible, tags }) {
+  async execute({ name, description, date, consultingId, amountOfHours, responsibleId, tags }: RegisterActivityInput) {
+    console.log({ name, description, date, consultingId, amountOfHours, responsibleId, tags })
     const consulting = await this.consultingRepository.getById(consultingId);
-    const activity = new Activity(
+    const responsible = new Responsible(responsibleId, ResponsibleCategory.CONSULTING);
+    let activity = new Activity(
       undefined,
       name,
       description,
@@ -24,16 +37,13 @@ export class RegisterActivity {
       consulting.id,
       responsible,
       amountOfHours,
-      tags.map(tagName => new Tag(tagName)),
+      tags?.map(tagName => new Tag(tagName)),
       "Opened");
-    await this.activityRepositoy.saveActivity(activity);
-    if (tags) {
-      for (let tag of activity.tags) {
-        let existsTag = await this.activityRepositoy.existsTag(tag.name);
-        if (!existsTag) {
-          await this.activityRepositoy.saveTag(tag)
-        }
-      }
-    }
+    activity = await this.activityRepositoy.saveActivity(activity);
+    activity.tags?.forEach(async tag => {
+      let existsTag = await this.activityRepositoy.existsTag(tag.name);
+      if (!existsTag) await this.activityRepositoy.saveTag(tag)
+    });
+    return activity;
   }
 }
