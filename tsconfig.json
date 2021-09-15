@@ -16,7 +16,7 @@
     "experimentalDecorators": true,        
     "emitDecoratorMetadata": true,         
     "paths": {
-      "*": ["node_modules/*"],
+      
       "@root/*": [ "./" ],
       "@domain/*": [ "./src/domain/*" ],
       "@adapter/*": ["./src/adapter/*"],
