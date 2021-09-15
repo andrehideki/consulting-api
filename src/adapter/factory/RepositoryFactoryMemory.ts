@@ -5,6 +5,7 @@ import DataEncriptor from "@domain/entity/DataEncriptor";
 import { ActivityRepositoryMemory } from "@adapter/repository/ActivityRepositoryMemory";
 import { ConsultingRepositoryMemory } from "@adapter/repository/ConsultingRepositoryMemory";
 import { UserRepositoryMemory } from "@adapter/repository/UserRepositoryMemory";
+import { ActivityRepositoryMemorySingleton } from "@adapter/repository/singleton/ActivityRepositoryMemory";
 
 
 export default class RepositoryFactoryMemory implements RepositoryFactory {
@@ -16,7 +17,8 @@ export default class RepositoryFactoryMemory implements RepositoryFactory {
   }
 
   createActivityRepository() {
-    return new ActivityRepositoryMemory();
+    // return new ActivityRepositoryMemory();
+    return ActivityRepositoryMemorySingleton.getInstance();
   }
 
   createUserRepository(): UserRepository {
