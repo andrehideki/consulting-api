@@ -7,6 +7,7 @@ import { ActivityRepositoryMemorySingleton } from "@adapter/repository/singleton
 import { ConsultingRepositoryMemorySingleton } from "@adapter/repository/singleton/ConsultingRepositoryMemorySingleton";
 import { ConsultingRepository } from "@domain/repository/ConsultingRepository";
 import { ActivityRepository } from "@domain/repository/ActivityRepository";
+import { UserRepositoryMemorySingleton } from "@adapter/repository/singleton/UserRepositoryMemorySingleton";
 
 
 export default class RepositoryFactoryMemory implements RepositoryFactory {
@@ -24,6 +25,7 @@ export default class RepositoryFactoryMemory implements RepositoryFactory {
   }
 
   createUserRepository(): UserRepository {
-    return new UserRepositoryMemory(this.dataEncryptor);
+    // return new UserRepositoryMemory(this.dataEncryptor);
+    return UserRepositoryMemorySingleton.getInstance(this.dataEncryptor);
   }
 }
