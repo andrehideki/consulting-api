@@ -2,21 +2,23 @@ import { UserRepository } from "@domain/repository/UserRepository";
 import RepositoryFactory from "@domain/factory/RepositoryFactory";
 import DataEncriptor from "@domain/entity/DataEncriptor";
 
-import { ActivityRepositoryMemory } from "@adapter/repository/ActivityRepositoryMemory";
-import { ConsultingRepositoryMemory } from "@adapter/repository/ConsultingRepositoryMemory";
 import { UserRepositoryMemory } from "@adapter/repository/UserRepositoryMemory";
-import { ActivityRepositoryMemorySingleton } from "@adapter/repository/singleton/ActivityRepositoryMemory";
+import { ActivityRepositoryMemorySingleton } from "@adapter/repository/singleton/ActivityRepositoryMemorySingleton";
+import { ConsultingRepositoryMemorySingleton } from "@adapter/repository/singleton/ConsultingRepositoryMemorySingleton";
+import { ConsultingRepository } from "@domain/repository/ConsultingRepository";
+import { ActivityRepository } from "@domain/repository/ActivityRepository";
 
 
 export default class RepositoryFactoryMemory implements RepositoryFactory {
 
   constructor(private dataEncryptor: DataEncriptor) {}
 
-  createConsultingRepository() {
-    return new ConsultingRepositoryMemory();
+  createConsultingRepository(): ConsultingRepository {
+    // return new ConsultingRepositoryMemory();
+    return ConsultingRepositoryMemorySingleton.getInstance();
   }
 
-  createActivityRepository() {
+  createActivityRepository(): ActivityRepository {
     // return new ActivityRepositoryMemory();
     return ActivityRepositoryMemorySingleton.getInstance();
   }
