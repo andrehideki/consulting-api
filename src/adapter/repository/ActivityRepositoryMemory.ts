@@ -10,9 +10,22 @@ export class ActivityRepositoryMemory implements ActivityRepository {
   private tags: Tag[] = [];
 
   constructor() {
+    const today = new Date();
     this.activities.push(new Activity(1, "Nova atividade", "Realizar nova atividade...", new Date(2021, 0, 1), 1, new Responsible(1, ResponsibleCategory.CONSULTING), 8, [new Tag("test")], "opened"));
     this.activities.push(new Activity(2, "Atividade 2", "Realizar nova atividade...", new Date(2021, 0, 1), 1, new Responsible(1, ResponsibleCategory.CONSULTING), 2, [], "opened"));
-    this.activities.push(new Activity(3, "Atividade 3", "Realizar nova atividade...", new Date(2021, 1, 1), 1, new Responsible(1, ResponsibleCategory.CONSULTING), 2, [], "opened"));
+    this.activities.push(new Activity(3, "Atividade 3", "Realizar nova atividade...", today, 1, new Responsible(1, ResponsibleCategory.CONSULTING), 2, [], "opened"));
+    this.activities.push(new Activity(4, "Navbar", "Desenvolver Navbar...", new Date(2021, 9, 1), 1, new Responsible(1, ResponsibleCategory.OWNER), 2, [], "closed"));
+    this.activities.push(new Activity(5, "Sidebar", "Desenvolver Navbar...", today, 1,  new Responsible(4, ResponsibleCategory.OWNER), 2, [], "opened"));
+    this.activities.push(new Activity(6, "Section", "Desenvolver Section...", today, 1,  new Responsible(4, ResponsibleCategory.OWNER), 2, [], "opened"));
+    this.activities.push(new Activity(7, "Aside",  "Desenvolver Aside...", today, 1,  new Responsible(4, ResponsibleCategory.OWNER), 2, [], "opened"));
+    this.activities.push(new Activity(8, "Header",  "Desenvolver Header...", today, 1,  new Responsible(4, ResponsibleCategory.OWNER), 2, [], "opened"));
+    this.activities.push(new Activity(9, "Login Page",  "Desenvolver Login...", today, 1,  new Responsible(4, ResponsibleCategory.OWNER), 2, [], "opened"));
+    this.activities.push(new Activity(10, "Admin Page", "Desenvolver Admin Page...", today, 1, new Responsible(4, ResponsibleCategory.OWNER), 2, [], "opened"));
+    this.activities.push(new Activity(11, "Users Page", "Desenvolver Users Page...", today, 1, new Responsible(4, ResponsibleCategory.OWNER), 2, [], "opened"));
+    this.activities.push(new Activity(12, "Test page", "Desenvolver Test page...", today, 1, new Responsible(4, ResponsibleCategory.OWNER), 2, [], "opened"));
+    this.activities.push(new Activity(13, "Data page", "Desenvolver Data page...", today, 1, new Responsible(4, ResponsibleCategory.OWNER), 2, [], "opened"));
+    this.activities.push(new Activity(14, "Qualquer...", "Desenvolver Qualquer...", today, 1, new Responsible(4, ResponsibleCategory.OWNER), 2, [], "opened"));
+    this.activities.push(new Activity(15, "Jobs Page", "Desenvolver Jobs Page...", today, 1, new Responsible(4, ResponsibleCategory.OWNER), 2, [], "opened"));
     this.tags.push(new Tag("test"));
     this.tags.push(new Tag("test 1"));
     this.tags.push(new Tag("bayer"));
