@@ -3,12 +3,14 @@ import { UserCategory, getUserCategory } from "@domain/vo/UserCategory";
 import DataEncriptor from "./DataEncriptor";
 
 export class User {
+  id: number;
   email: Email;
   password: string;
   category: UserCategory;
   encryptor: DataEncriptor;
 
-  constructor(email: string, password: string, category: string, encryptor: DataEncriptor) {
+  constructor(id: number, email: string, password: string, category: string, encryptor: DataEncriptor) {
+    this.id = id;
     this.email = new Email(email);
     this.password = password;
     this.category = getUserCategory(category);

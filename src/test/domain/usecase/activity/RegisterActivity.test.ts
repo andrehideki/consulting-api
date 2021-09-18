@@ -21,7 +21,7 @@ describe("Register Activity Test", function () {
       date: "2021-01-01",
       consultingId: 2,
       amountOfHours: 8,
-      responsible: 2,
+      responsibleId: 2,
       tags: []
     });
     const afterRegisteringActivitySize = await (await activityRepository.findActivities(2, 1, 2021)).length;
@@ -36,10 +36,10 @@ describe("Register Activity Test", function () {
       consultingId: 2,
       amountOfHours: 8,
       tags: [],
-      responsible: 2
+      responsibleId: 2
     });
     const afterRegisteringActivitySize = await (await activityRepository.findActivities(2, 1, 2021)).length;
-    expect(afterRegisteringActivitySize).toBe(1);
+    expect(afterRegisteringActivitySize).toBe(2);
   });
 
   test("Should should throw error when unknow consulting", async () => {
@@ -50,7 +50,7 @@ describe("Register Activity Test", function () {
         date: "2021-01-01",
         consultingId: 999,
         amountOfHours: 8,
-        responsible: 2,
+        responsibleId: 2,
         tags: []
       });
     } catch (err) {
@@ -67,7 +67,7 @@ describe("Register Activity Test", function () {
         date: "2021-01-01",
         consultingId: 2,
         amountOfHours: 0,
-        responsible: 2,
+        responsibleId: 2,
         tags: []
       });
     } catch (err) {
@@ -84,7 +84,7 @@ describe("Register Activity Test", function () {
         date: "2021-01-01",
         amountOfHours: 10,
         consultingId: 2,
-        responsible: 2,
+        responsibleId: 2,
         tags: []
       });
     } catch (err) {
@@ -102,7 +102,7 @@ describe("Register Activity Test", function () {
       tags: [tagName],
       date: "2021-01-01",
       consultingId: 2,
-      responsible: 2,
+      responsibleId: 2,
       amountOfHours: 10
     });
     const newTag = await activityRepository.findTag(tagName.toLowerCase());
