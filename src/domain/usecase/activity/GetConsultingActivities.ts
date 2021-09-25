@@ -27,7 +27,8 @@ export class GetConsultingActivities {
         month: atv.month,
         name: atv.name,
         hours: atv.hours,
-        status: atv.status
+        status: atv.status,
+        tags: atv.tags.map(tag => tag.name)
       };
     });
   }
