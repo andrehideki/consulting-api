@@ -2,6 +2,7 @@ import RepositoryFactoryMemory from "@adapter/factory/RepositoryFactoryMemory";
 import { RegisterActivity } from "@domain/usecase/activity/RegisterActivity";
 import { ActivityRepository } from "@domain/repository/ActivityRepository";
 import DataEncriptorBcrypt from "@infra/services/DataEncriptorBcrypt";
+import fs from 'fs';
 
 let registerActivity: RegisterActivity;
 let activityRepository: ActivityRepository;
@@ -108,5 +109,20 @@ describe("Register Activity Test", function () {
     const newTag = await activityRepository.findTag(tagName.toLowerCase());
     expect(newTag).not.toBeNull();
     expect(newTag[0].name).toBe(tagName.toLowerCase());
+  });
+
+  test("Should register save file into server", async () => {
+    await fs.readFile('src/test/resources/file.txt', async (err, data) => {
+      if (err) return;
+      await registerActivity.execute({
+        name: "Atividade",
+        description: "Realizar nova atividade...",
+        date: "2021-01-01",
+        consultingId: 2,
+        responsibleId: 2,
+        amountOfHours: 10,
+        files: [data]
+      });
+    });
   });
 });

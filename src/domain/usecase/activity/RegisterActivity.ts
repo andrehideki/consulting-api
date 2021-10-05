@@ -14,6 +14,7 @@ export interface RegisterActivityInput {
   amountOfHours: number;
   responsibleId: number;
   tags?: string[];
+  files?: Buffer[];
 }
 
 export class RegisterActivity {
@@ -25,7 +26,7 @@ export class RegisterActivity {
     this.consultingRepository = repositoryFactory.createConsultingRepository();
   }
 
-  async execute({ name, description, date, consultingId, amountOfHours, responsibleId, tags }: RegisterActivityInput) {
+  async execute({ name, description, date, consultingId, amountOfHours, responsibleId, tags, files }: RegisterActivityInput) {
     const consulting = await this.consultingRepository.getById(consultingId);
     const responsible = new Responsible(responsibleId, ResponsibleCategory.CONSULTING);
     let activity = new Activity(
