@@ -4,6 +4,7 @@ import { Tag } from "@domain/entity/Tag";
 import RepositoryFactory from "@domain/factory/RepositoryFactory";
 import { ActivityRepository } from "@domain/repository/ActivityRepository";
 import { ConsultingRepository } from "@domain/repository/ConsultingRepository";
+import { FileService } from "@domain/service/FileService";
 import { ResponsibleCategory } from "@domain/valueobject/ReponsibleCategory";
 
 export interface RegisterActivityInput {
@@ -14,16 +15,23 @@ export interface RegisterActivityInput {
   amountOfHours: number;
   responsibleId: number;
   tags?: string[];
-  files?: Buffer[];
+  files?: AcvitivityFile[];
+}
+
+export class AcvitivityFile {
+  name: string;
+  file: Buffer;
 }
 
 export class RegisterActivity {
   activityRepositoy: ActivityRepository;
   consultingRepository: ConsultingRepository;
+  fileService: FileService;
 
-  constructor(repositoryFactory: RepositoryFactory) {
+  constructor(repositoryFactory: RepositoryFactory, fileService: FileService) {
     this.activityRepositoy = repositoryFactory.createActivityRepository();
     this.consultingRepository = repositoryFactory.createConsultingRepository();
+    this.fileService = fileService;
   }
 
   async execute({ name, description, date, consultingId, amountOfHours, responsibleId, tags, files }: RegisterActivityInput) {
@@ -44,6 +52,7 @@ export class RegisterActivity {
       let existsTag = await this.activityRepositoy.existsTag(tag.name);
       if (!existsTag) await this.activityRepositoy.saveTag(tag)
     });
+    files?.forEach(file => this.fileService.save(file.name, file.file));
     return activity;
   }
 }

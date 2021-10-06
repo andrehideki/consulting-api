@@ -3,6 +3,7 @@ import { RegisterActivity } from "@domain/usecase/activity/RegisterActivity";
 import { ActivityRepository } from "@domain/repository/ActivityRepository";
 import DataEncriptorBcrypt from "@infra/services/DataEncriptorBcrypt";
 import fs from 'fs';
+import { HDFileService } from "@adapter/service/HDFileService";
 
 let registerActivity: RegisterActivity;
 let activityRepository: ActivityRepository;
@@ -11,7 +12,7 @@ describe("Register Activity Test", function () {
 
   beforeEach(async () => {
     const repositoryFactory = new RepositoryFactoryMemory(new DataEncriptorBcrypt());
-    registerActivity = new RegisterActivity(repositoryFactory);
+    registerActivity = new RegisterActivity(repositoryFactory, new HDFileService());
     activityRepository = registerActivity.activityRepositoy;
   });
 
@@ -121,7 +122,10 @@ describe("Register Activity Test", function () {
         consultingId: 2,
         responsibleId: 2,
         amountOfHours: 10,
-        files: [data]
+        files: [{
+          file: data,
+          name: 'file.txt'
+        }]
       });
     });
   });
