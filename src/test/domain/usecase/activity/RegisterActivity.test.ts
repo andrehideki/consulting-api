@@ -12,7 +12,7 @@ describe("Register Activity Test", function () {
 
   beforeEach(async () => {
     const repositoryFactory = new RepositoryFactoryMemory(new DataEncriptorBcrypt());
-    registerActivity = new RegisterActivity(repositoryFactory, new HDFileService());
+    registerActivity = new RegisterActivity(repositoryFactory, new HDFileService("C:/test"));
     activityRepository = registerActivity.activityRepositoy;
   });
 
